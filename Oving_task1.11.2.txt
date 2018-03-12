@@ -1,0 +1,30 @@
+What are the functionality of wait(), notify() and notifyAll() and
+what is the difference between notify() and notifyAll()?
+
+When using threads that operate in parallel, the notify(), wait() and notifyAll() have the purpose of organizing different threads by communication between them
+wait() - stops a thread either for a given amount of time, or until being notified by another thread. Also drops lock on current thread.
+notify() - wakes a waiting thread
+notifyAll() - wakes all waiting threads
+
+Shared variables:
+    private static int waitingAreaCapacity = 10;
+    private static int waitressCount = 4;
+    private static int duration = 5;
+    public static int maxOrder = 10;
+    public static int waitressWait = 50; // Used to calculat the time the waitress spends before taking the order
+    public static int customerWait = 300; // Used to calculate the time the customer uses eating
+    public static int doorWait = 10; // Used to calculate the interval at which the door tries to create a customer // seconds
+    public static boolean isOpen = true;
+
+    //Variables related to statistics
+    public static SynchronizedInteger customerCounter;
+    public static SynchronizedInteger servedOrders;
+    public static SynchronizedInteger takeawayOrders;
+    public static SynchronizedInteger totalOrders;
+
+These are the shared variables in the project. In order to manage them i first passed them into each object, but later realized that i could just get  them from the sushibar directly. They are static as they don't belong to a specific object.
+
+
+Which method or thread will report the final statistics and how will
+it recognize the proper time for writing these statistics?
+ - main function writes the statistics after all threads have terminated after each join-function call

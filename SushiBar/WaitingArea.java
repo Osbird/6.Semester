@@ -1,11 +1,12 @@
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * This class implements a waiting area used as the bounded buffer, in the producer/consumer problem.
  */
 public class WaitingArea {
 
-    private LinkedList<Customer> waitingAreaList = new LinkedList<Customer>();
+    private Queue<Customer> waitingAreaList = new LinkedList<Customer>();
     private int size;
     /**
      * Creates a new waiting area.
@@ -29,26 +30,46 @@ public class WaitingArea {
      *
      * @param customer A customer created by Door, trying to enter the waiting area
      */
-    public synchronized void enter(Customer customer) {
+    public synchronized void enter(Customer customer) throws InterruptedException {
         // TODO Implement required functionality
-        if (!this.isFull()){
-            waitingAreaList.add(customer);
+        while (this.isFull()) {
+            wait();
         }
+        if (SushiBar.isOpen) {
+            waitingAreaList.add(customer);
+            SushiBar.write("Customer "+customer.getCustomerID()+" is now waiting.");
+            SushiBar.customerCounter.increment();
+
+            //Testing
+            System.out.println(this.waitingAreaList);
+
+        }
+        notifyAll();
     }
 
     /**
      * @return The customer that is first in line.
      */
-    public synchronized Customer next() {
+    public synchronized Customer next() throws InterruptedException {
         // TODO Implement required functionality
         //Todo: implement check for free room in sushibar
-        return waitingAreaList.pollFirst();
+        while (waitingAreaList.isEmpty()){
+            wait();
+        }
+        Customer customer = waitingAreaList.remove();
+        SushiBar.write("Customer "+customer.getCustomerID()+" is now fetched.");
+        notifyAll();
+        return customer;
     }
 
     // Add more methods as you see fit
 
     public boolean isFull(){
         return waitingAreaList.size()>=size;
+    }
+
+    public boolean isEmpty(){
+        return waitingAreaList.size()==0;
     }
 
 
