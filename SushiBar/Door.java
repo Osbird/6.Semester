@@ -3,6 +3,7 @@
  * The Door corresponds to the Producer in the producer/consumer problem
  */
 public class Door implements Runnable {
+    WaitingArea waitingArea;
 
     /**
      * Creates a new Door. Make sure to save the
@@ -10,10 +11,10 @@ public class Door implements Runnable {
      */
     public Door(WaitingArea waitingArea) {
         // TODO Implement required functionality
-    /*
-        if !waitingArea.isFull(){
-            waitingArea.
-  */      //Open for specific amount of time, when customers can enter.
+        // Todo: check if an OS tries to place a new customer and gets an exception or if it checks first
+        this.waitingArea=waitingArea;
+        this.run();
+        //Open for specific amount of time, when customers can enter.
     }
 
     /**
@@ -24,6 +25,10 @@ public class Door implements Runnable {
     public void run() {
 
 
+
+        if (!waitingArea.isFull()) {
+            //waitingArea.
+        }
 
 
     }

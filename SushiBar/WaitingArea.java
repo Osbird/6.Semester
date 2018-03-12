@@ -41,6 +41,7 @@ public class WaitingArea {
      */
     public synchronized Customer next() {
         // TODO Implement required functionality
+        //Todo: implement check for free room in sushibar
         return waitingAreaList.pollFirst();
     }
 
@@ -50,5 +51,5 @@ public class WaitingArea {
         return waitingAreaList.size()>=size;
     }
 
-   
+
 }

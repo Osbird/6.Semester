@@ -1,9 +1,12 @@
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
+
 /**
  * This class implements a customer, which is used for holding data and update the statistics
  *
  */
 public class Customer {
-
+    private UUID uniqueID = UUID.randomUUID();
     /**
      *  Creates a new Customer.
      *  Each customer should be given a unique ID
@@ -20,15 +23,16 @@ public class Customer {
      */
     public synchronized void order(){
         // TODO Implement required functionality
+        //Todo :  some logic called from sushibar, or waitress
     }
 
     /**
      *
      * @return Should return the customerID
      */
-    public int getCustomerID() {
+    public UUID getCustomerID() {
         // TODO Implement required functionality
-        return Integer.parseInt(null);
+        return uniqueID;
     }
 
     // Add more methods as you see fit
