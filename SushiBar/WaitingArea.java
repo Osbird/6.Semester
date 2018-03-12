@@ -5,6 +5,8 @@ import java.util.LinkedList;
  */
 public class WaitingArea {
 
+    private LinkedList<Customer> waitingAreaList = new LinkedList<Customer>();
+    private int size;
     /**
      * Creates a new waiting area.
      * areaSize decides how many people can be waiting at the same time (how large the shared buffer is)
@@ -13,6 +15,13 @@ public class WaitingArea {
      */
     public WaitingArea(int size) {
         // TODO Implement required functionality
+        this.size=size;
+/*
+        for (int i=0; i<size; i++){
+            waitingAreaList.add(null);
+        }*/
+        //Check for string type vs int type later
+        //System.out.println("size of w area "+waitingAreaList.get(19));
     }
 
     /**
@@ -22,6 +31,9 @@ public class WaitingArea {
      */
     public synchronized void enter(Customer customer) {
         // TODO Implement required functionality
+        if (!this.isFull()){
+            waitingAreaList.add(customer);
+        }
     }
 
     /**
@@ -29,7 +41,14 @@ public class WaitingArea {
      */
     public synchronized Customer next() {
         // TODO Implement required functionality
+        return waitingAreaList.pollFirst();
     }
 
     // Add more methods as you see fit
+
+    public boolean isFull(){
+        return waitingAreaList.size()>=size;
+    }
+
+   
 }

@@ -11,6 +11,9 @@ public class Waitress implements Runnable {
      */
     Waitress(WaitingArea waitingArea) {
         // TODO Implement required functionality
+
+
+        //Customers orders sushi when fetched by waitress
     }
 
     /**

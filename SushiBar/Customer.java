@@ -10,6 +10,8 @@ public class Customer {
      */
     public Customer() {
         // TODO Implement required functionality
+
+        //Eats some sushi at bar, takes rest with them
     }
 
 
@@ -26,6 +28,7 @@ public class Customer {
      */
     public int getCustomerID() {
         // TODO Implement required functionality
+        return Integer.parseInt(null);
     }
 
     // Add more methods as you see fit

@@ -10,6 +10,10 @@ public class Door implements Runnable {
      */
     public Door(WaitingArea waitingArea) {
         // TODO Implement required functionality
+    /*
+        if !waitingArea.isFull(){
+            waitingArea.
+  */      //Open for specific amount of time, when customers can enter.
     }
 
     /**
@@ -18,7 +22,10 @@ public class Door implements Runnable {
      */
     @Override
     public void run() {
-        // TODO Implement required functionality
+
+
+
+
     }
 
     // Add more methods as you see fit

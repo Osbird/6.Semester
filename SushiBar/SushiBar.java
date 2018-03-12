@@ -36,6 +36,14 @@ public class SushiBar {
         servedOrders = new SynchronizedInteger(0);
         takeawayOrders = new SynchronizedInteger(0);
 
+        WaitingArea waitingAreaObj = new WaitingArea(waitingAreaCapacity);
+
+        // Create waitress and door & pass the waitingArea to their constructor
+        Door door_Producer = new Door(waitingAreaObj);
+        Waitress waitress_consumer = new Waitress(waitingAreaObj);
+
+        System.out.println(waitingAreaObj.isFull());
+
         // TODO initialize the bar and start the different threads
     }
 
